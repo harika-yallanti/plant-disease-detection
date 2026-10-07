@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PlantCare AI | Plant Disease Detection</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="navbar">
+
+    <div class="logo">
+        🌿 PlantCare AI
+    </div>
+
+    <div class="navbar-right">
+
+        <p>
+            AI-Powered Plant Health Detection
+        </p>
+
+        <button
+            id="logoutButton"
+            class="logout-button"
+        >
+            Logout
+        </button>
+
+    </div>
+
+    </header>
+
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- Hero Section -->
+        <section class="hero">
+
+            <span class="hero-badge">
+                AI Plant Health Assistant
+            </span>
+
+            <h1>
+                Detect Plant Diseases
+                <span>with AI</span>
+            </h1>
+
+            <p>
+                Upload a clear image of a plant leaf and our
+                AI model will analyze it and provide the predicted
+                condition, confidence score, treatment guidance,
+                and prevention tips.
+            </p>
+
+        </section>
+
+
+        <!-- Upload Card -->
+        <section class="upload-card">
+
+            <div class="section-heading">
+
+                <h2>Analyze a Leaf</h2>
+
+                <p>
+                    Upload a JPG, JPEG, or PNG image
+                </p>
+
+            </div>
+
+
+            <!-- Upload Area -->
+            <label
+                for="imageInput"
+                class="upload-area"
+                id="uploadArea"
+            >
+
+                <div class="upload-icon">
+                    📷
+                </div>
+
+                <strong id="fileText">
+                    Click to choose a leaf image
+                </strong>
+
+                <span>
+                    or drag and drop your image here
+                </span>
+
+                <small>
+                    Supported formats: JPG, JPEG, PNG
+                </small>
+
+            </label>
+
+            <input
+                type="file"
+                id="imageInput"
+                accept="image/png, image/jpeg, image/jpg"
+            >
+
+
+            <!-- Preview -->
+            <div
+                id="previewContainer"
+                class="preview-container hidden"
+            >
+
+                <img
+                    id="imagePreview"
+                    src=""
+                    alt="Selected plant leaf"
+                >
+
+            </div>
+
+
+            <!-- Predict Button -->
+            <button
+                id="predictButton"
+                class="predict-button"
+                disabled
+            >
+                🔍 Analyze Leaf
+            </button>
+
+
+            <!-- Loading -->
+            <div
+                id="loadingMessage"
+                class="loading hidden"
+            >
+
+                <div class="spinner"></div>
+
+                <span>
+                    AI is analyzing your image...
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- Error -->
+        <div
+            id="errorMessage"
+            class="error hidden"
+        ></div>
+
+
+        <!-- Result -->
+        <section
+            id="resultSection"
+            class="result-card hidden"
+        >
+
+            <div class="result-header">
+
+                <div>
+
+                    <span class="result-label">
+                        AI Prediction
+                    </span>
+
+                    <h2 id="diseaseName">
+                        -
+                    </h2>
+
+                </div>
+
+
+                <div class="confidence-box">
+
+                    <span>
+                        Confidence
+                    </span>
+
+                    <strong id="confidence">
+                        -
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Description -->
+            <div class="info-section">
+
+                <div class="info-icon">
+                    🌱
+                </div>
+
+                <div>
+
+                    <h3>
+                        About the Condition
+                    </h3>
+
+                    <p id="description">
+                        -
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Treatment -->
+            <div class="info-section">
+
+                <div class="info-icon">
+                    💊
+                </div>
+
+                <div>
+
+                    <h3>
+                        Recommended Treatment
+                    </h3>
+
+                    <p id="treatment">
+                        -
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Prevention -->
+            <div class="info-section">
+
+                <div class="info-icon">
+                    🛡️
+                </div>
+
+                <div>
+
+                    <h3>
+                        Prevention
+                    </h3>
+
+                    <p id="prevention">
+                        -
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            
+
+        </section>
+            <!-- Reset -->
+            <button
+                id="resetButton"
+                class="reset-button"
+            >
+                ↻ Analyze Another Image
+            </button>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            PlantCare AI • AI-based plant disease detection
+        </p>
+
+        <span>
+            Powered by MobileNetV2 + FastAPI
+        </span>
+
+    </footer>
+
+
+    <script type="module"
+    src="script.js"></script>
+
+</body>
+
+</html>

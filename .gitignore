@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Local datasets
+dataset/processed/
+dataset/split/
+dataset/validator/
+dataset/hard_negative/
+
+# Personal/local test images
+*.jpg
+*.jpeg
+*.png
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+
+# Environment variables
+.env
+.env.*
+
+# Python cache
+.pytest_cache/
+
+# Temporary files
+*.tmp
+*.temp
