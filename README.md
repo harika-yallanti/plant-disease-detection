@@ -82,7 +82,7 @@ After prediction, the application displays:
 
 Treatment and prevention information is maintained as controlled application data rather than being generated directly by the prediction model.
 
-## 🧠 Machine Learning
+## Machine Learning
 
 ### Model Architecture
 
