@@ -8,9 +8,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from tensorflow.keras.models import load_model
 
 
-# ============================================================
+
 # PATH CONFIGURATION
-# ============================================================
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,9 +20,9 @@ CLASS_NAMES_PATH = BASE_DIR / "models" / "class_names.json"
 VALIDATOR_MODEL_PATH = BASE_DIR / "models" / "leaf_validator.keras"
 
 
-# ============================================================
+
 # FASTAPI APP
-# ============================================================
+
 
 app = FastAPI(
     title="Plant Disease Detection API",
@@ -31,9 +31,9 @@ app = FastAPI(
 )
 
 
-# ============================================================
+
 # CORS
-# ============================================================
+
 
 app.add_middleware(
     CORSMiddleware,
@@ -44,9 +44,9 @@ app.add_middleware(
 )
 
 
-# ============================================================
+
 # LOAD PLANT DISEASE MODEL
-# ============================================================
+
 
 print("Loading plant disease model...")
 
@@ -59,9 +59,9 @@ print("Plant disease model loaded successfully!")
 print("Number of disease classes:", len(class_names))
 
 
-# ============================================================
+
 # LOAD LEAF VALIDATOR MODEL
-# ============================================================
+
 
 print("Loading leaf validator...")
 
@@ -70,9 +70,9 @@ validator_model = load_model(VALIDATOR_MODEL_PATH)
 print("Leaf validator loaded successfully!")
 
 
-# ============================================================
+
 # DISEASE INFORMATION
-# ============================================================
+
 
 DISEASE_INFO = {
 
@@ -234,9 +234,9 @@ DISEASE_INFO = {
 }
 
 
-# ============================================================
+
 # HOME ROUTE
-# ============================================================
+
 
 @app.get("/")
 def home():
@@ -246,16 +246,16 @@ def home():
     }
 
 
-# ============================================================
+
 # PREDICTION ROUTE
-# ============================================================
+
 
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
 
-    # --------------------------------------------------------
+   
     # CHECK FILE TYPE
-    # --------------------------------------------------------
+   
 
     if not file.content_type:
         raise HTTPException(
@@ -269,9 +269,7 @@ async def predict(file: UploadFile = File(...)):
             detail="Please upload an image file."
         )
 
-    # --------------------------------------------------------
     # READ IMAGE
-    # --------------------------------------------------------
 
     try:
         image_bytes = await file.read()
@@ -288,9 +286,9 @@ async def predict(file: UploadFile = File(...)):
             detail="Invalid image file."
         )
 
-    # --------------------------------------------------------
+   
     # RESIZE IMAGE
-    # --------------------------------------------------------
+   
 
     image = image.resize((224, 224))
 
@@ -300,9 +298,9 @@ async def predict(file: UploadFile = File(...)):
     # Add batch dimension
     image_array = np.expand_dims(image_array, axis=0)
 
-    # --------------------------------------------------------
+    
     # LEAF / NON-LEAF VALIDATION
-    # --------------------------------------------------------
+    
 
     validator_output = float(
         validator_model.predict(
@@ -311,8 +309,6 @@ async def predict(file: UploadFile = File(...)):
         )[0][0]
     )
 
-    # 0.70 means sufficiently confident that the image
-    # belongs to the non-leaf class.
     NON_LEAF_THRESHOLD = 0.70
 
     if validator_output >= NON_LEAF_THRESHOLD:
@@ -329,15 +325,15 @@ async def predict(file: UploadFile = File(...)):
             )
         }
 
-    # --------------------------------------------------------
     # PLANT DISEASE PREDICTION
-    # --------------------------------------------------------
 
     predictions = model.predict(
         image_array,
         verbose=0
     )
 
+    
+    
     predicted_index = int(
         np.argmax(predictions[0])
     )
@@ -348,10 +344,10 @@ async def predict(file: UploadFile = File(...)):
 
     predicted_class = class_names[predicted_index]
 
-    # --------------------------------------------------------
-    # GET DISEASE INFORMATION
-    # --------------------------------------------------------
 
+   
+    # GET DISEASE INFORMATION
+    
     info = DISEASE_INFO.get(
         predicted_class,
         {
@@ -362,9 +358,8 @@ async def predict(file: UploadFile = File(...)):
         }
     )
 
-    # --------------------------------------------------------
+    
     # SUCCESS RESPONSE
-    # --------------------------------------------------------
 
     return {
         "valid_leaf": True,

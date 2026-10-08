@@ -3,9 +3,9 @@ from pathlib import Path
 import shutil
 
 
-# --------------------------------------------------
+
 # Configuration
-# --------------------------------------------------
+
 
 MAX_IMAGES_PER_CLASS = 500
 
@@ -25,9 +25,9 @@ selected_classes = [
 ]
 
 
-# --------------------------------------------------
+
 # Load dataset
-# --------------------------------------------------
+
 
 print("Loading PlantVillage dataset...")
 
@@ -40,9 +40,9 @@ dataset = load_dataset(
 print(f"Total images: {len(dataset)}")
 
 
-# --------------------------------------------------
+
 # Filter selected classes
-# --------------------------------------------------
+
 
 print("\nFiltering selected classes...")
 
@@ -53,9 +53,9 @@ dataset = dataset.filter(
 print(f"Filtered images: {len(dataset)}")
 
 
-# --------------------------------------------------
+
 # Remove old processed dataset
-# --------------------------------------------------
+
 
 if OUTPUT_DIR.exists():
     print("\nRemoving previous processed dataset...")
@@ -64,9 +64,9 @@ if OUTPUT_DIR.exists():
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 
-# --------------------------------------------------
+
 # Save images
-# --------------------------------------------------
+
 
 class_counts = {}
 
@@ -116,9 +116,9 @@ for class_name in selected_classes:
     class_counts[class_name] = number_to_use
 
 
-# --------------------------------------------------
+
 # Summary
-# --------------------------------------------------
+
 
 print("\n===================================")
 print("Dataset preparation completed!")

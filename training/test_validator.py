@@ -6,17 +6,17 @@ from PIL import Image
 from tensorflow.keras.models import load_model
 
 
-# ==========================================
+
 # Paths
-# ==========================================
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 MODEL_PATH = BASE_DIR / "models" / "leaf_validator.keras"
 
-# ==========================================
+
 # Load model
-# ==========================================
+
 
 print("Loading leaf validator...")
 
@@ -25,9 +25,9 @@ model = load_model(MODEL_PATH)
 print("Validator loaded successfully!")
 
 
-# ==========================================
+
 # Check command-line argument
-# ==========================================
+
 
 if len(sys.argv) < 2:
     print("\nUsage:")
@@ -42,9 +42,9 @@ if not image_path.exists():
     sys.exit(1)
 
 
-# ==========================================
+
 # Load image
-# ==========================================
+
 
 try:
 
@@ -67,9 +67,9 @@ except Exception as error:
     sys.exit(1)
 
 
-# ==========================================
+
 # Prediction
-# ==========================================
+
 
 prediction = float(
     model.predict(
@@ -79,9 +79,9 @@ prediction = float(
 )
 
 
-# ==========================================
+
 # Interpret prediction
-# ==========================================
+
 
 # sigmoid output:
 # 0 = leaf
@@ -100,9 +100,9 @@ else:
     confidence = (1 - prediction) * 100
 
 
-# ==========================================
+
 # Display result
-# ==========================================
+
 
 print("\n====================================")
 print("Leaf Validator Result")

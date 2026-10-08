@@ -7,9 +7,9 @@ from sklearn.metrics import classification_report, confusion_matrix
 from tensorflow.keras.models import load_model
 
 
-# ==============================
+
 # Paths
-# ==============================
+
 
 VALIDATION_DIR = Path("dataset/split/validation")
 MODEL_PATH = Path("models/plant_disease_model.keras")
@@ -19,9 +19,9 @@ IMAGE_SIZE = (224, 224)
 BATCH_SIZE = 32
 
 
-# ==============================
+
 # Load class names
-# ==============================
+
 
 with open(CLASS_NAMES_PATH, "r", encoding="utf-8") as file:
     class_names = json.load(file)
@@ -32,9 +32,9 @@ for index, class_name in enumerate(class_names):
     print(f"{index}: {class_name}")
 
 
-# ==============================
+
 # Load validation dataset
-# ==============================
+
 
 print("\nLoading validation dataset...")
 
@@ -48,18 +48,18 @@ validation_dataset = tf.keras.utils.image_dataset_from_directory(
 print(f"\nValidation images: {len(validation_dataset.file_paths)}")
 
 
-# ==============================
+
 # Load trained model
-# ==============================
+
 
 print("\nLoading trained model...")
 
 model = load_model(MODEL_PATH)
 
 
-# ==============================
+
 # Generate predictions
-# ==============================
+
 
 print("\nGenerating predictions...")
 
@@ -80,9 +80,9 @@ true_labels = np.array(true_labels)
 predicted_labels = np.array(predicted_labels)
 
 
-# ==============================
+
 # Classification Report
-# ==============================
+
 
 print("\n==========================================")
 print("Classification Report")
@@ -99,9 +99,9 @@ report = classification_report(
 print(report)
 
 
-# ==============================
+
 # Confusion Matrix
-# ==============================
+
 
 print("\n==========================================")
 print("Confusion Matrix")
@@ -116,9 +116,9 @@ matrix = confusion_matrix(
 print(matrix)
 
 
-# ==============================
+
 # Overall Accuracy
-# ==============================
+
 
 accuracy = np.mean(true_labels == predicted_labels)
 

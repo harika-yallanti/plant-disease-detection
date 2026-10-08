@@ -3,9 +3,9 @@ import shutil
 import random
 
 
-# ============================================================
+
 # Configuration
-# ============================================================
+
 
 SOURCE_DIR = Path("dataset/processed")
 OUTPUT_DIR = Path("dataset/split")
@@ -14,25 +14,25 @@ VALIDATION_RATIO = 0.20
 SEED = 42
 
 
-# ============================================================
+
 # Set random seed
-# ============================================================
+
 
 random.seed(SEED)
 
 
-# ============================================================
+
 # Remove previous split
-# ============================================================
+
 
 if OUTPUT_DIR.exists():
     print("Removing previous split...")
     shutil.rmtree(OUTPUT_DIR)
 
 
-# ============================================================
+
 # Create output folders
-# ============================================================
+
 
 TRAIN_DIR = OUTPUT_DIR / "train"
 VALIDATION_DIR = OUTPUT_DIR / "validation"
@@ -41,9 +41,9 @@ TRAIN_DIR.mkdir(parents=True)
 VALIDATION_DIR.mkdir(parents=True)
 
 
-# ============================================================
+
 # Process every class
-# ============================================================
+
 
 total_train = 0
 total_validation = 0
@@ -114,9 +114,9 @@ for class_dir in class_directories:
     )
 
 
-# ============================================================
+
 # Summary
-# ============================================================
+
 
 print("\n===================================")
 print("Split completed!")

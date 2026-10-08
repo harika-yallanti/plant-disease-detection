@@ -1,128 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <title>PlantCare AI - Login</title>
 
-    <title>PlantCare AI | Login</title>
-
-    <link rel="stylesheet"
-          href="style.css">
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
+<body class="auth-page">
 
-<body>
+    <div class="auth-container">
 
-    <div class="login-container">
+        <!-- LEFT SIDE -->
+        <div class="auth-left">
 
-        <div class="login-card">
+            <div class="brand-section">
+                <div class="brand-icon">🌿</div>
 
-            <h1>🌿 PlantCare AI</h1>
+                <h1>PlantCare AI</h1>
 
-            <p class="login-subtitle">
-                Plant Disease Detection
-            </p>
+                <p class="brand-tagline">
+                    AI-Powered Plant Disease Detection
+                </p>
+            </div>
+
+            <div class="project-description">
+
+                <h2>Protect Your Plants with AI</h2>
+
+                <p>
+                    Upload a clear image of a plant leaf and let our
+                    AI-powered system identify possible plant diseases
+                    and provide helpful treatment and prevention guidance.
+                </p>
+
+                <div class="feature-list">
+
+                    <div class="feature-item">
+                        <span>✓</span>
+                        <p>AI-based plant disease detection</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <span>✓</span>
+                        <p>Supports multiple plant diseases</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <span>✓</span>
+                        <p>Clear treatment recommendations</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <span>✓</span>
+                        <p>Prevention guidance for healthier plants</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="auth-left-footer">
+                <span>🌱</span>
+                <span>Smart detection. Better plant care.</span>
+            </div>
+
+        </div>
 
 
-            <!-- Login Form -->
+        <!-- RIGHT SIDE -->
+        <div class="auth-right">
 
-            <div id="loginForm">
+            <!-- LOGIN FORM -->
+            <div id="loginForm" class="auth-form-container">
 
-                <h2>Login</h2>
+                <h2>Welcome Back</h2>
 
-                <input
-                    type="email"
-                    id="loginEmail"
-                    name="email"
-                    autocomplete="username"
-                    placeholder="Enter your email"
-                    required
-                >
+                <p class="auth-subtitle">
+                    Login to continue to PlantCare AI
+                </p>
 
-                <input
-                    type="password"
-                    id="loginPassword"
-                    name="password"
-                    autocomplete="current-password"
-                    placeholder="Enter your password"
-                    required
-                >
+                <form id="loginFormElement">
+
+                    <div class="input-group">
+
+                        <label for="loginEmail">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="loginEmail"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="loginPassword">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            placeholder="Enter your password"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="forgot-password-container">
+
+                        <button
+                            type="button"
+                            id="forgotPasswordButton"
+                            class="forgot-password-button"
+                        >
+                            Forgot Password?
+                        </button>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="auth-submit-button"
+                    >
+                        Login
+                    </button>
+
+                </form>
+
+
+                <div class="auth-divider">
+                    <span>OR</span>
+                </div>
+
 
                 <button
-                    id="loginButton"
+                    type="button"
+                    id="googleLoginButton"
+                    class="google-login-button"
                 >
-                    Login
+                    <span class="google-icon">G</span>
+                    Continue with Google
                 </button>
 
 
-                <p id="loginError"
-                   class="auth-message">
-                </p>
+                <p class="auth-switch">
 
-
-                <p class="switch-text">
                     Don't have an account?
+
                     <button
-                        id="showRegister"
-                        class="link-button"
+                        type="button"
+                        id="showRegisterButton"
+                        class="auth-link-button"
                     >
-                        Register
+                        Sign Up
                     </button>
+
                 </p>
 
             </div>
 
 
-            <!-- Register Form -->
-
-            <div id="registerForm"
-                 class="hidden">
+            <!-- REGISTER FORM -->
+            <div
+                id="registerForm"
+                class="auth-form-container hidden"
+            >
 
                 <h2>Create Account</h2>
 
-                <input
-                    type="email"
-                    id="registerEmail"
-                    name="registerEmail"
-                    autocomplete="email"
-                    placeholder="Enter your email"
-                    required
-                >
+                <p class="auth-subtitle">
+                    Create your PlantCare AI account
+                </p>
 
-                <input
-                    type="password"
-                    id="registerPassword"
-                    name="new-password"
-                    autocomplete="new-password"
-                    placeholder="Create a password"
-                    required
-                >
+                <form id="registerFormElement">
+
+                    <div class="input-group">
+
+                        <label for="registerEmail">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="registerEmail"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="registerPassword">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="registerPassword"
+                            placeholder="Create a password"
+                            minlength="6"
+                            required
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="auth-submit-button"
+                    >
+                        Create Account
+                    </button>
+
+                </form>
+
+
+                <div class="auth-divider">
+                    <span>OR</span>
+                </div>
+
 
                 <button
-                    id="registerButton"
+                    type="button"
+                    id="googleRegisterButton"
+                    class="google-login-button"
                 >
-                    Register
+                    <span class="google-icon">G</span>
+                    Continue with Google
                 </button>
 
 
-                <p id="registerError"
-                   class="auth-message">
-                </p>
+                <p class="auth-switch">
 
-
-                <p class="switch-text">
                     Already have an account?
+
                     <button
-                        id="showLogin"
-                        class="link-button"
+                        type="button"
+                        id="showLoginButton"
+                        class="auth-link-button"
                     >
                         Login
                     </button>
+
                 </p>
 
             </div>
@@ -132,13 +264,7 @@
     </div>
 
 
-    <!-- Firebase Authentication -->
-
-    <script
-        type="module"
-        src="auth.js">
-    </script>
+    <script type="module" src="auth.js"></script>
 
 </body>
-
 </html>

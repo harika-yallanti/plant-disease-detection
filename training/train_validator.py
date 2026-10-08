@@ -10,9 +10,9 @@ from tensorflow.keras.callbacks import (
 )
 
 
-# ==========================================
+
 # Paths
-# ==========================================
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,9 +25,9 @@ CLASS_NAMES_PATH = MODEL_DIR / "validator_class_names.json"
 MODEL_DIR.mkdir(parents=True, exist_ok=True)
 
 
-# ==========================================
+
 # Configuration
-# ==========================================
+
 
 IMAGE_SIZE = (224, 224)
 BATCH_SIZE = 32
@@ -35,9 +35,9 @@ EPOCHS = 10
 SEED = 42
 
 
-# ==========================================
+
 # Load dataset
-# ==========================================
+
 
 print("Loading validator dataset...")
 
@@ -83,9 +83,9 @@ validation_dataset = validation_dataset.prefetch(
 )
 
 
-# ==========================================
+
 # Data augmentation
-# ==========================================
+
 
 data_augmentation = tf.keras.Sequential([
     layers.RandomFlip("horizontal"),
@@ -94,9 +94,9 @@ data_augmentation = tf.keras.Sequential([
 ])
 
 
-# ==========================================
+
 # Load MobileNetV2
-# ==========================================
+
 
 print("\nLoading MobileNetV2...")
 
@@ -110,9 +110,9 @@ base_model = MobileNetV2(
 base_model.trainable = False
 
 
-# ==========================================
+
 # Build validator model
-# ==========================================
+
 
 inputs = layers.Input(shape=(224, 224, 3))
 
@@ -142,9 +142,9 @@ validator_model = models.Model(
 )
 
 
-# ==========================================
+
 # Compile model
-# ==========================================
+
 
 validator_model.compile(
     optimizer=tf.keras.optimizers.Adam(
@@ -157,9 +157,9 @@ validator_model.compile(
 validator_model.summary()
 
 
-# ==========================================
+
 # Callbacks
-# ==========================================
+
 
 early_stopping = EarlyStopping(
     monitor="val_loss",
@@ -175,9 +175,9 @@ model_checkpoint = ModelCheckpoint(
 )
 
 
-# ==========================================
+
 # Train model
-# ==========================================
+
 
 print("\nStarting validator training...")
 
@@ -192,9 +192,9 @@ history = validator_model.fit(
 )
 
 
-# ==========================================
+
 # Final evaluation
-# ==========================================
+
 
 print("\nEvaluating validator...")
 

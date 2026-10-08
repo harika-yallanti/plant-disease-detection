@@ -12,18 +12,47 @@
 
 <body>
 
-    <!-- Header -->
+    
+         <!-- HEADER -->
+   
+
     <header class="navbar">
 
-    <div class="logo">
-        🌿 PlantCare AI
-    </div>
+        <div class="logo">
+            🌿 PlantCare AI
+        </div>
 
-    <div class="navbar-right">
+        <nav class="nav-menu">
 
-        <p>
-            AI-Powered Plant Health Detection
-        </p>
+            <button
+                class="nav-button active"
+                data-section="analyzeSection"
+            >
+                🔍 Analyze
+            </button>
+
+            <button
+                class="nav-button"
+                data-section="overviewSection"
+            >
+                📖 Overview
+            </button>
+
+            <button
+                class="nav-button"
+                data-section="historySection"
+            >
+                🕘 History
+            </button>
+
+            <button
+                class="nav-button"
+                data-section="profileSection"
+            >
+                👤 Profile
+            </button>
+
+        </nav>
 
         <button
             id="logoutButton"
@@ -32,237 +61,273 @@
             Logout
         </button>
 
-    </div>
-
     </header>
 
 
-    <!-- Main Content -->
+    
+         <!-- MAIN CONTENT -->
+
     <main class="container">
 
-        <!-- Hero Section -->
-        <section class="hero">
 
-            <span class="hero-badge">
-                AI Plant Health Assistant
-            </span>
+      
+             <!-- 1. ANALYZE SECTION -->
+        
 
-            <h1>
-                Detect Plant Diseases
-                <span>with AI</span>
-            </h1>
-
-            <p>
-                Upload a clear image of a plant leaf and our
-                AI model will analyze it and provide the predicted
-                condition, confidence score, treatment guidance,
-                and prevention tips.
-            </p>
-
-        </section>
-
-
-        <!-- Upload Card -->
-        <section class="upload-card">
-
-            <div class="section-heading">
-
-                <h2>Analyze a Leaf</h2>
-
-                <p>
-                    Upload a JPG, JPEG, or PNG image
-                </p>
-
-            </div>
-
-
-            <!-- Upload Area -->
-            <label
-                for="imageInput"
-                class="upload-area"
-                id="uploadArea"
-            >
-
-                <div class="upload-icon">
-                    📷
-                </div>
-
-                <strong id="fileText">
-                    Click to choose a leaf image
-                </strong>
-
-                <span>
-                    or drag and drop your image here
-                </span>
-
-                <small>
-                    Supported formats: JPG, JPEG, PNG
-                </small>
-
-            </label>
-
-            <input
-                type="file"
-                id="imageInput"
-                accept="image/png, image/jpeg, image/jpg"
-            >
-
-
-            <!-- Preview -->
-            <div
-                id="previewContainer"
-                class="preview-container hidden"
-            >
-
-                <img
-                    id="imagePreview"
-                    src=""
-                    alt="Selected plant leaf"
-                >
-
-            </div>
-
-
-            <!-- Predict Button -->
-            <button
-                id="predictButton"
-                class="predict-button"
-                disabled
-            >
-                🔍 Analyze Leaf
-            </button>
-
-
-            <!-- Loading -->
-            <div
-                id="loadingMessage"
-                class="loading hidden"
-            >
-
-                <div class="spinner"></div>
-
-                <span>
-                    AI is analyzing your image...
-                </span>
-
-            </div>
-
-        </section>
-
-
-        <!-- Error -->
-        <div
-            id="errorMessage"
-            class="error hidden"
-        ></div>
-
-
-        <!-- Result -->
         <section
-            id="resultSection"
-            class="result-card hidden"
+            id="analyzeSection"
+            class="dashboard-section active-section"
         >
 
-            <div class="result-header">
+            <!-- Hero Section -->
 
-                <div>
+            <section class="hero">
 
-                    <span class="result-label">
-                        AI Prediction
-                    </span>
+                <span class="hero-badge">
+                    AI Plant Health Assistant
+                </span>
 
-                    <h2 id="diseaseName">
-                        -
+                <h1>
+                    Detect Plant Diseases
+                    <span>with AI</span>
+                </h1>
+
+                <p>
+                    Upload a clear image of a plant leaf and our
+                    AI model will analyze it and provide the predicted
+                    condition, confidence score, treatment guidance,
+                    and prevention tips.
+                </p>
+
+            </section>
+
+
+            <!-- Upload Card -->
+
+            <section class="upload-card">
+
+                <div class="section-heading">
+
+                    <h2>
+                        Analyze a Leaf
                     </h2>
 
+                    <p>
+                        Upload a JPG, JPEG, or PNG image
+                    </p>
+
                 </div>
 
 
-                <div class="confidence-box">
+                <!-- Upload Area -->
 
-                    <span>
-                        Confidence
-                    </span>
+                <label
+                    for="imageInput"
+                    class="upload-area"
+                    id="uploadArea"
+                >
 
-                    <strong id="confidence">
-                        -
+                    <div class="upload-icon">
+                        📷
+                    </div>
+
+                    <strong id="fileText">
+                        Click to choose a leaf image
                     </strong>
 
-                </div>
+                    <span>
+                        or drag and drop your image here
+                    </span>
 
-            </div>
+                    <small>
+                        Supported formats: JPG, JPEG, PNG
+                    </small>
 
-
-            <!-- Description -->
-            <div class="info-section">
-
-                <div class="info-icon">
-                    🌱
-                </div>
-
-                <div>
-
-                    <h3>
-                        About the Condition
-                    </h3>
-
-                    <p id="description">
-                        -
-                    </p>
-
-                </div>
-
-            </div>
+                </label>
 
 
-            <!-- Treatment -->
-            <div class="info-section">
+                <input
+                    type="file"
+                    id="imageInput"
+                    accept="image/png, image/jpeg, image/jpg"
+                >
+                <p class="upload-guidance">
+    🌿 For best results, upload a clear, well-lit image of a plant leaf.
+</p>
+                <p class="supported-plants">
+    🌿 <strong>Supported plants:</strong>
+    Apple · Corn / Maize · Potato · Tomato
+</p>
 
-                <div class="info-icon">
-                    💊
-                </div>
+                <!-- Image Preview -->
 
-                <div>
+                <div
+                    id="previewContainer"
+                    class="preview-container hidden"
+                >
 
-                    <h3>
-                        Recommended Treatment
-                    </h3>
-
-                    <p id="treatment">
-                        -
-                    </p>
+                    <img
+                        id="imagePreview"
+                        src=""
+                        alt="Selected plant leaf"
+                    >
 
                 </div>
 
-            </div>
+
+                <!-- Predict Button -->
+
+                <button
+                    id="predictButton"
+                    class="predict-button"
+                    disabled
+                >
+                    🔍 Analyze Leaf
+                </button>
 
 
-            <!-- Prevention -->
-            <div class="info-section">
+                <!-- Loading -->
 
-                <div class="info-icon">
-                    🛡️
+                <div
+                    id="loadingMessage"
+                    class="loading hidden"
+                >
+
+                    <div class="spinner"></div>
+
+                    <span>
+                        AI is analyzing your image...
+                    </span>
+
                 </div>
 
-                <div>
-
-                    <h3>
-                        Prevention
-                    </h3>
-
-                    <p id="prevention">
-                        -
-                    </p>
-
-                </div>
-
-            </div>
+            </section>
 
 
+            <!-- Error Message -->
+
+            <div
+                id="errorMessage"
+                class="error hidden"
+            ></div>
+
+
+           
+                 <!-- PREDICTION RESULT -->
             
 
-        </section>
-            <!-- Reset -->
+            <section
+                id="resultSection"
+                class="result-card hidden"
+            >
+
+                <!-- Result Header -->
+
+                <div class="result-header">
+
+                    <div>
+
+                        <span class="result-label">
+                            AI Prediction
+                        </span>
+
+                        <h2 id="diseaseName">
+                            -
+                        </h2>
+
+                    </div>
+
+
+                    <!-- Confidence -->
+
+                    <div class="confidence-box">
+
+                        <span>
+                            Confidence
+                        </span>
+
+                        <strong id="confidence">
+                            -
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Description -->
+
+                <div class="info-section">
+
+                    <div class="info-icon">
+                        🌱
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            About the Condition
+                        </h3>
+
+                        <p id="description">
+                            -
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Treatment -->
+
+                <div class="info-section">
+
+                    <div class="info-icon">
+                        💊
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Recommended Treatment
+                        </h3>
+
+                        <p id="treatment">
+                            -
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Prevention -->
+
+                <div class="info-section">
+
+                    <div class="info-icon">
+                        🛡️
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Prevention
+                        </h3>
+
+                        <p id="prevention">
+                            -
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Reset Button -->
+
             <button
                 id="resetButton"
                 class="reset-button"
@@ -270,25 +335,518 @@
                 ↻ Analyze Another Image
             </button>
 
-    </main>
+        </section>
 
 
-    <!-- Footer -->
-    <footer>
+       
+     <!-- 2. OVERVIEW SECTION -->
 
-        <p>
-            PlantCare AI • AI-based plant disease detection
-        </p>
 
-        <span>
-            Powered by MobileNetV2 + FastAPI
-        </span>
+<section
+    id="overviewSection"
+    class="dashboard-section hidden"
+>
 
+    <div class="page-card">
+
+        <!-- Page Header -->
+
+        <div class="section-heading">
+
+            <span class="hero-badge">
+                About PlantCare AI
+            </span>
+
+            <h2>
+                📖 PlantCare AI
+            </h2>
+
+            <p>
+                A simple AI-powered application for identifying
+                common plant diseases from leaf images.
+            </p>
+
+        </div>
+
+
+        <!-- About PlantCare AI -->
+
+        <div class="overview-block">
+
+            <h3>
+                🌱 About PlantCare AI
+            </h3>
+
+            <p>
+                PlantCare AI helps users identify possible plant
+                diseases by analyzing images of plant leaves.
+            </p>
+
+            <p>
+                Upload a clear leaf image to receive a predicted
+                condition, confidence score, and useful information
+                about treatment and prevention.
+            </p>
+
+        </div>
+
+
+        <!-- What You Can Do -->
+
+        <div class="overview-block">
+
+            <h3>
+                🔍 What You Can Do
+            </h3>
+
+            <div class="feature-grid">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        🔍
+                    </div>
+
+                    <h4>
+                        Detect Plant Diseases
+                    </h4>
+
+                    <p>
+                        Upload a plant leaf image and receive
+                        an AI-based disease prediction.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        📊
+                    </div>
+
+                    <h4>
+                        View Prediction Details
+                    </h4>
+
+                    <p>
+                        View the predicted condition, confidence,
+                        treatment, and prevention information.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        🕘
+                    </div>
+
+                    <h4>
+                        Track History
+                    </h4>
+
+                    <p>
+                        Review your previous plant disease
+                        predictions whenever you need them.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        👤
+                    </div>
+
+                    <h4>
+                        Manage Your Profile
+                    </h4>
+
+                    <p>
+                        Update your profile name and profile
+                        picture from your dashboard.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Supported Plants -->
+
+        <div class="overview-block">
+
+            <h3>
+                🌿 Supported Plants
+            </h3>
+
+            <p>
+                PlantCare AI currently supports disease detection
+                for the following plants:
+            </p>
+
+            <div class="plant-list">
+
+                <div class="plant-item">
+                    🍎
+                    <span>Apple</span>
+                </div>
+
+                <div class="plant-item">
+                    🌽
+                    <span>Corn / Maize</span>
+                </div>
+
+                <div class="plant-item">
+                    🥔
+                    <span>Potato</span>
+                </div>
+
+                <div class="plant-item">
+                    🍅
+                    <span>Tomato</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Detectable Conditions -->
+
+        <div class="overview-block">
+
+            <h3>
+                🩺 Detectable Conditions
+            </h3>
+
+            <p>
+                The current version can identify 10 plant conditions
+                across the supported plants.
+            </p>
+
+            <div class="disease-list">
+
+                <span>Apple Scab</span>
+                <span>Apple Healthy</span>
+
+                <span>Corn Common Rust</span>
+                <span>Corn Healthy</span>
+
+                <span>Potato Early Blight</span>
+                <span>Potato Late Blight</span>
+                <span>Potato Healthy</span>
+
+                <span>Tomato Early Blight</span>
+                <span>Tomato Late Blight</span>
+                <span>Tomato Healthy</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- How It Works -->
+
+        <div class="overview-block">
+
+            <h3>
+                🔄 How It Works
+            </h3>
+
+            <div class="workflow-cards">
+
+                <div class="workflow-card">
+
+                    <span class="workflow-number">
+                        1
+                    </span>
+
+                    <div>
+                        <h4>Upload</h4>
+
+                        <p>
+                            Select a clear image of a plant leaf.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="workflow-card">
+
+                    <span class="workflow-number">
+                        2
+                    </span>
+
+                    <div>
+                        <h4>Analyze</h4>
+
+                        <p>
+                            The application analyzes the uploaded image.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="workflow-card">
+
+                    <span class="workflow-number">
+                        3
+                    </span>
+
+                    <div>
+                        <h4>View Results</h4>
+
+                        <p>
+                            See the predicted condition and confidence.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="workflow-card">
+
+                    <span class="workflow-number">
+                        4
+                    </span>
+
+                    <div>
+                        <h4>Take Action</h4>
+
+                        <p>
+                            Review treatment and prevention guidance.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Important Note -->
+
+        <div class="overview-note">
+
+            <h3>
+                ⚠️ Important Note
+            </h3>
+
+            <p>
+                PlantCare AI provides informational predictions and
+                basic guidance. Results may vary depending on image
+                quality and other factors. For serious plant health
+                concerns, consult a qualified agricultural professional.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+        <section
+            id="historySection"
+            class="dashboard-section hidden"
+        >
+
+            <div class="page-card">
+
+                <div class="section-heading">
+
+                    <span class="hero-badge">
+                        Your Activity
+                    </span>
+
+                    <h2>
+                        🕘 Prediction History
+                    </h2>
+
+                    <p>
+                        View the plant images you have analyzed,
+                        their predictions, confidence scores,
+                        and the date and time of analysis.
+                    </p>
+
+                </div>
+
+
+                <!-- History Container -->
+
+                <div class="history-header">
+    <div></div>
+
+    <button id="clearHistoryButton" class="clear-history-button">
+        Clear History
+    </button>
+</div>
+
+<div id="historyContainer" class="history-container">
+    <div class="empty-history">
+        <p>No prediction history yet.</p>
+    </div>
+</div>
+
+            </div>
+
+        </section>
+
+
+       =========
+     4. PROFILE SECTION
+=================================== -->
+
+<section
+    id="profileSection"
+    class="dashboard-section hidden"
+>
+
+    <div class="page-card profile-container">
+
+        <div class="profile-header">
+            <h2>👤 My Profile</h2>
+            <p>Manage your account information and profile.</p>
+        </div>
+
+
+        <div class="profile-image-section">
+
+            <div class="profile-avatar" id="profileAvatar">
+                H
+            </div>
+
+            <div class="profile-image-info">
+                <h3 id="profileName">User</h3>
+                <p id="profileEmail">Not available</p>
+            </div>
+
+        </div>
+
+
+        <div class="profile-details">
+
+            <div class="profile-field">
+                <span class="profile-label">Name</span>
+                <span id="profileDisplayName">Not provided</span>
+            </div>
+
+            <div class="profile-field">
+                <span class="profile-label">Email</span>
+                <span id="profileProfileEmail">Not available</span>
+            </div>
+
+            <div class="profile-field">
+                <span class="profile-label">User ID</span>
+                <span id="profileUserId">Not available</span>
+            </div>
+
+            <div class="profile-field">
+                <span class="profile-label">Account Type</span>
+                <span id="profileAccountType">
+                    Firebase Authentication
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="profile-actions">
+
+            <button
+                type="button"
+                id="editProfileButton"
+                class="edit-profile-button"
+            >
+                ✏️ Edit Profile
+            </button>
+
+        </div>
+        <div id="editProfileForm" class="edit-profile-form hidden">
+
+    <h3>Edit Profile</h3>
+
+    <div class="edit-profile-field">
+        <label for="editProfileName">Name</label>
+        <input
+            type="text"
+            id="editProfileName"
+            placeholder="Enter your name"
+            maxlength="50"
+        >
+    </div>
+
+    <div class="edit-profile-field">
+        <label for="editProfileImage">Profile Image</label>
+        <input
+            type="file"
+            id="editProfileImage"
+            accept="image/*"
+        >
+    </div>
+    
+    <button
+    type="button"
+    id="removeProfileImageButton"
+    class="remove-profile-button"
+    >
+    🗑️ Remove Profile Image
+    </button>
+
+    <div id="profileImagePreview" class="profile-image-preview hidden">
+        <img id="profilePreviewImage" src="" alt="Profile preview">
+    </div>
+
+    <div class="edit-profile-actions">
+        <button
+            type="button"
+            id="cancelEditProfileButton"
+            class="cancel-profile-button"
+        >
+            Cancel
+        </button>
+
+        <button
+            type="button"
+            id="saveProfileButton"
+            class="save-profile-button"
+        >
+            Save Profile
+        </button>
+    </div>
+
+</div>
+
+    </div>
+
+</section>
+
+    
+         <!-- FOOTER -->
+    ========================== -->
+
+    <footer class="footer">
+    <div class="footer-brand">🌿 PlantCare AI</div>
+    <p>Helping you understand plant health, one leaf at a time.</p>
+    <div class="footer-copy">© 2026 PlantCare AI</div>
     </footer>
 
 
-    <script type="module"
-    src="script.js"></script>
+    
+         <!-- JAVASCRIPT -->
+    
+
+    <script
+        type="module"
+        src="script.js">
+    </script>
 
 </body>
 

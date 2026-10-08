@@ -6,9 +6,9 @@ from tensorflow import keras
 from tensorflow.keras import layers
 
 
-# ============================================================
+
 # Configuration
-# ============================================================
+
 
 TRAIN_DIR = Path("dataset/split/train")
 VALIDATION_DIR = Path("dataset/split/validation")
@@ -26,9 +26,9 @@ MODEL_DIR.mkdir(
 )
 
 
-# ============================================================
+
 # Load training dataset
-# ============================================================
+
 
 print("Loading training dataset...")
 
@@ -41,9 +41,9 @@ train_dataset = tf.keras.utils.image_dataset_from_directory(
 )
 
 
-# ============================================================
+
 # Load validation dataset
-# ============================================================
+
 
 print("\nLoading validation dataset...")
 
@@ -55,9 +55,9 @@ validation_dataset = tf.keras.utils.image_dataset_from_directory(
 )
 
 
-# ============================================================
+
 # Class names
-# ============================================================
+
 
 class_names = train_dataset.class_names
 
@@ -67,9 +67,9 @@ for index, class_name in enumerate(class_names):
     print(f"{index}: {class_name}")
 
 
-# ============================================================
+
 # Improve performance
-# ============================================================
+
 
 AUTOTUNE = tf.data.AUTOTUNE
 
@@ -82,9 +82,9 @@ validation_dataset = validation_dataset.prefetch(
 )
 
 
-# ============================================================
+
 # Data augmentation
-# ============================================================
+
 
 data_augmentation = keras.Sequential(
     [
@@ -96,9 +96,9 @@ data_augmentation = keras.Sequential(
 )
 
 
-# ============================================================
+
 # MobileNetV2
-# ============================================================
+
 
 print("\nLoading MobileNetV2...")
 
@@ -111,9 +111,9 @@ base_model = tf.keras.applications.MobileNetV2(
 base_model.trainable = False
 
 
-# ============================================================
+
 # Build model
-# ============================================================
+
 
 inputs = keras.Input(
     shape=(224, 224, 3)
@@ -145,9 +145,9 @@ model = keras.Model(
 )
 
 
-# ============================================================
+
 # Compile
-# ============================================================
+
 
 model.compile(
     optimizer=keras.optimizers.Adam(
@@ -158,9 +158,9 @@ model.compile(
 )
 
 
-# ============================================================
+
 # Callbacks
-# ============================================================
+
 
 callbacks = [
 
@@ -178,9 +178,9 @@ callbacks = [
 ]
 
 
-# ============================================================
+
 # Train
-# ============================================================
+
 
 print("\nStarting training...")
 
@@ -192,9 +192,9 @@ history = model.fit(
 )
 
 
-# ============================================================
+
 # Save class names
-# ============================================================
+
 
 with open(
     MODEL_DIR / "class_names.json",
@@ -209,9 +209,9 @@ with open(
     )
 
 
-# ============================================================
+
 # Final evaluation
-# ============================================================
+
 
 print("\nEvaluating model...")
 

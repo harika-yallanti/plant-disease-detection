@@ -7,9 +7,9 @@ from PIL import Image
 from tensorflow.keras.datasets import cifar10
 
 
-# ==========================================
+
 # Paths
-# ==========================================
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,9 +21,9 @@ NON_LEAF_DIR = VALIDATOR_DIR / "non_leaf"
 HARD_NEGATIVE_DIR = BASE_DIR / "dataset" / "hard_negative"
 
 
-# ==========================================
+
 # Configuration
-# ==========================================
+
 
 MAX_LEAF_IMAGES = 3000
 MAX_NON_LEAF_IMAGES = 3000
@@ -34,17 +34,17 @@ random.seed(RANDOM_SEED)
 np.random.seed(RANDOM_SEED)
 
 
-# ==========================================
+
 # Create folders
-# ==========================================
+
 
 LEAF_DIR.mkdir(parents=True, exist_ok=True)
 NON_LEAF_DIR.mkdir(parents=True, exist_ok=True)
 
 
-# ==========================================
+
 # Clear previous validator dataset
-# ==========================================
+
 
 print("Cleaning previous validator dataset...")
 
@@ -54,9 +54,9 @@ for folder in [LEAF_DIR, NON_LEAF_DIR]:
             item.unlink()
 
 
-# ==========================================
+
 # Collect leaf images
-# ==========================================
+
 
 print("\nCollecting leaf images...")
 
@@ -81,9 +81,9 @@ leaf_images = leaf_images[:MAX_LEAF_IMAGES]
 print("Leaf images selected:", len(leaf_images))
 
 
-# ==========================================
+
 # Copy leaf images
-# ==========================================
+
 
 for index, image_path in enumerate(leaf_images):
 
@@ -92,9 +92,9 @@ for index, image_path in enumerate(leaf_images):
     shutil.copy2(image_path, destination)
 
 
-# ==========================================
+
 # Download CIFAR-10
-# ==========================================
+
 
 print("\nLoading CIFAR-10 dataset...")
 
@@ -105,9 +105,9 @@ x_all = np.concatenate([x_train, x_test], axis=0)
 
 print("CIFAR-10 images available:", len(x_all))
 
-# ==========================================
+
 # Add real-world hard negative images
-# ==========================================
+
 
 print("\nAdding real-world hard negative images...")
 
@@ -140,9 +140,9 @@ print(
     hard_negative_count
 )
 
-# ==========================================
+
 # Select non-leaf images
-# ==========================================
+
 
 indices = list(range(len(x_all)))
 random.shuffle(indices)
@@ -150,9 +150,9 @@ random.shuffle(indices)
 indices = indices[:MAX_NON_LEAF_IMAGES]
 
 
-# ==========================================
+
 # Save non-leaf images
-# ==========================================
+
 
 print("\nSaving non-leaf images...")
 
@@ -167,9 +167,9 @@ for index, image_index in enumerate(indices):
     image.save(destination, quality=95)
 
 
-# ==========================================
+
 # Summary
-# ==========================================
+
 
 print("\n==========================================")
 print("Validator dataset prepared successfully!")
